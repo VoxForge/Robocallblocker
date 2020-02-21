@@ -212,3 +212,23 @@ Tip-Ring Voltage Polarity  - defaults
 	MWIEnable	selected
 	MessageWaiting	unselected, not default
 	
+***FREEPBX***	
+
+**Outbound Routes**
+Connectivity > Outbound Routes
+
+	Route Settings
+		Route: 81DialsPOTS
+		Trunk Sequence for Matched Routes: OBITRUNK1
+		
+	Dial Patterns
+	
+		81|
+		81|1NXXNXXXXXX
+		81|NXXNXXXXXX
+		81|NXXXXXX
+		81|X11
+		
+	Import/Export Patterns - not appicable
+	
+	Additional Settings - defaults
