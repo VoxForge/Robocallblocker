@@ -11,11 +11,61 @@ Found an old OBI110 I had purchased a few years ago and finally got around to se
 
 *Internet Settings*
 
-	IPAddress
-	SubnetMask
-	DefaultGateway
-	DNSServer1
+	IPAddress	192.168.1.13 (need a static ip address for OBI110)
+	SubnetMask	255.255.255.0
+	DefaultGateway	192.168.1.1 (ip address of your router)
+	DNSServer1	192.168.1.1
 
+---
+
+***Line***
+
+(The connection from OBI110 to rj11 telephone jack)
+
+**Line Port**
+
+	Enable			selected	
+	DigitMap	        default		
+	InboundCallRoute	SP2(5194743773)	
+
+**ITSP Profile B**
+(ITSP = Internet Service Provider - i.e. FreePBX)
+
+*General*
+
+	DigitMap	default
+
+Service Provider Info - defaults
+
+*SIP*
+
+	ProxyServer	192.168.1.13 (ip address of FreePBX service)
+	ProxyServerPort	5060 (default)
+	RegistrarServerPort 5060 (default)
+	OutboundProxyPort 5060 (default)
+	X_SpoofCallerID - selected
+	X_AccessList 	192.168.1.13
+
+FreePBX server port 5060 points to chan_sip on FreePBX in this configuration; (this is not a default FreePBX setting)
+
+**Voice Services**
+
+**SP2 Service**
+
+	Enable			selected
+	X_ServProvProfile	B
+	X_InboundCallRoute	LI
+	X_KeepAliveServerPort	5060 (default)
+	X_UserAgentPort		5061 (default)
+
+**SIP Credentials**
+
+	AuthUserName	OBITRUNK1
+	AuthPassword	password
+	
+**Calling Features**
+
+	defaults
 
 
 ***FREEPBX***	
@@ -34,7 +84,7 @@ Connectivity > Trunks
 			Trunk Name	OBITRUNK1
 			PEER Details
 				username=OBITRUNK1
-				secret=password
+				secret=password (password used for SP2 Service - Sip Credentials)
 				host=dynamic
 				type=friend
 				context=from-trunk
@@ -80,7 +130,8 @@ Applications
 	Pin Sets - defaults
 	Other - defaults
 
-==========================================================================================================
+---
+
 ***PHONE***
 
 **PHONE Port**
@@ -137,3 +188,7 @@ Tip-Ring Voltage Polarity  - defaults
 	AuthPassword	FREEPBXPASSWORD
 	MWIEnable	selected
 	MessageWaiting	unselected, not default
+
+**Calling Features**
+
+	defaults
