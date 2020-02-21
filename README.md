@@ -9,11 +9,8 @@ Found an old OBI110 I had purchased a few years ago and finally got around to se
 
 	Enable			
 	DigitMap	        default		
-	([1-9]x?*(Mpli)|[1-9]|[1-9][0-9]|911|**0|***|#|**1(Msp1)|**2(Msp2)|**8(Mli)|**9(Mpp)|(Mpli))
 	OutboundCallRoute	default		
-	{([1-9]x?*(Mpli)):pp},{(<#:>|911):li},{**0:aa},{***:aa2},{(<**1:>(Msp1)):sp1},{(<**2:>(Msp2)):sp2},{(<**8:>(Mli)):li},{(<**9:>(Mpp)):pp},{(Mpli):pli}
 	CallReturnDigitMaps	default		
-	{pli:(xx.)},{sp1:(<**1>xx.)},{sp2:(<**2>xx.)},{li:(<**8>xx.)},{pp:(<**9>xx.)}
 	PrimaryLine	        SP1 Service
 		
 Ringer - defaults
@@ -35,7 +32,6 @@ Tip-Ring Voltage Polarity  - defaults
 *General*
 
 	DigitMap	default
-	(1xxxxxxxxxx|<1>[2-9]xxxxxxxxx|011xx.|xx.|(Mipd)|[^*#]@@.)
 	
 *SIP*
 
