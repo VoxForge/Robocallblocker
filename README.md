@@ -16,6 +16,71 @@ Found an old OBI110 I had purchased a few years ago and finally got around to se
 	DefaultGateway
 	DNSServer1
 
+
+
+***FREEPBX***	
+
+**Trunk**
+Connectivity > Trunks
+
+	Trunk Name		OBITRUNK1
+	Outbound CallerID 	5555551234 (phone number of line attache to OBI110)
+	
+	Dial Number Manipulation Rules none
+	
+	sip Settings
+
+		Outgoing
+			Trunk Name	OBITRUNK1
+			PEER Details
+				username=OBITRUNK1
+				secret=password
+				host=dynamic
+				type=friend
+				context=from-trunk
+				qualify=yes
+				dtmfmode=rfc2833
+				canreinvite=no
+				disallow=all
+				allow=ulaw
+
+		Incoming	(leave blank)
+
+**Inbound Routes**
+
+Route: Obi110
+
+	General
+		Description	Obi110
+		DID Number	5555551234 (phone number of line attache to OBI110)
+		Set Destination 
+			Extensions > Add new Extension
+			
+	Advanced - defaults
+	Privacy - defaults
+	Fax - defaults
+	Other - defaults
+
+Applications
+
+	Extensions: 300
+	General
+		Display Name myextension
+		Secret (long password that will be used to configure the OBI line, sip2 configurations)
+		
+		User Manager Settings - defaults
+		(an extension, which can be accessed using numeric keypad of telephone set must be associated with a FreePBX username, which can be used to access the extension on-line)
+	
+	Voicemail
+		Enabled - selected
+		Voicemail Password 1234 (numeric password used to access voice mail from phone handset)
+
+	Find Me/Follow Me - defaults
+	Advanced - defaults
+	Pin Sets - defaults
+	Other - defaults
+
+==========================================================================================================
 ***PHONE***
 
 **PHONE Port**
@@ -72,42 +137,3 @@ Tip-Ring Voltage Polarity  - defaults
 	AuthPassword	FREEPBXPASSWORD
 	MWIEnable	selected
 	MessageWaiting	unselected, not default
-
-***FREEPBX***	
-
-**Trunk**
-Connectivity > Trunks
-
-	Trunk Name		OBITRUNK1
-	Outbound CallerID 	5555551234 (phone number of line attache to OBI110)
-	
-	Dial Number Manipulation Rules none
-	
-	sip Settings
-
-		Outgoing
-			Trunk Name	OBITRUNK1
-			PEER Details
-				username=OBITRUNK1
-				secret=password
-				host=dynamic
-				type=friend
-				context=from-trunk
-				qualify=yes
-				dtmfmode=rfc2833
-				canreinvite=no
-				disallow=all
-				allow=ulaw
-
-		Incoming	(leave blank)
-**Inbound Routes**
-Route: Obi110
-	General
-		Description	Obi110
-		DID Number	5555551234 (phone number of line attache to OBI110)
-		Set Destination 
-			Extensions > Add new Extension
-	Advanced defaults
-	Privacy defaults
-	Fax defaults
-	Other defaults
