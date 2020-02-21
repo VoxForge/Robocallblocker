@@ -13,25 +13,17 @@ Found an old OBI110 I had purchased a few years ago and finally got around to se
 	CallReturnDigitMaps	default		
 	PrimaryLine	        SP1 Service
 		
-Ringer              
-
-	defaults
-
-Port Settings
-
-	defaults
+Ringer - defaults
+Port Settings - defaults
 
 Calling Features
 
 	StarCodeProfile     None
 
-Timers
+Timers - defaults
 
-	defaults
+Tip-Ring Voltage Polarity  - defaults
 
-Tip-Ring Voltage Polarity 
-
-	defaults
 	
 **ITSP Profile A**
 (Internet Service Provider - i.e. FreePBX)
