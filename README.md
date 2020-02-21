@@ -9,10 +9,10 @@ Found an old OBI110 I had purchased a few years ago and finally got around to se
 
 *Internet Settings*
 
-IPAddress
-SubnetMask
-DefaultGateway
-DNSServer1
+	IPAddress
+	SubnetMask
+	DefaultGateway
+	DNSServer1
 
 ***PHONE***
 
