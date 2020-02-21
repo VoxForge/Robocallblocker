@@ -33,6 +33,18 @@ Tip-Ring Voltage Polarity
 
 	defaults
 	
+**ITSP Profile A**
+(Internet Service Provider - i.e. FreePBX)
 
+*General*
+
+	DigitMap	default
+	
+*SIP*
+
+	ProxyServer	192.168.1.13
+	ProxyServerPort	6060
+	RegistrarServerPort 6060
+	OutboundProxyPort 6060
 
 
