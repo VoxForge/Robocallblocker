@@ -1,9 +1,11 @@
-# Robocallblocker
+# Robocallblocker (work in progress as Feb 21)
 Configurations for OBI110 and FreePBX/Asterisk block landline robocallers.
  
 Found an old OBI110 I had purchased a few years ago and finally got around to setting it up to communicate with FreePBX on an old HP mini netbook.  Can now send predictive dialers to Spam voice mail box, and send whitelist to our landline phones.
 
-***OBIHAI OBI110***
+(Sources: [FreePBX Documentation wiki](https://wiki.freepbx.org/pages/viewpage.action?pageId=4161594), [ObiTalk Forum: Using the Obi 110 as an FXO and FXS Port for FreePBX](http://www.obitalk.com/forum/index.php?topic=1157.msg7261#msg7261) )
+
+***OBIHAI OBI110 - setting up basic communications between OBI110 and FreePBX***
 
 **Network Settings**
 
@@ -76,4 +78,36 @@ Tip-Ring Voltage Polarity  - defaults
 **Trunk**
 Connectivity > Trunks
 
+	Trunk Name		OBITRUNK1
+	Outbound CallerID 	5555551234 (phone number of line attache to OBI110)
 	
+	Dial Number Manipulation Rules none
+	
+	sip Settings
+
+		Outgoing
+			Trunk Name	OBITRUNK1
+			PEER Details
+				username=OBITRUNK1
+				secret=password
+				host=dynamic
+				type=friend
+				context=from-trunk
+				qualify=yes
+				dtmfmode=rfc2833
+				canreinvite=no
+				disallow=all
+				allow=ulaw
+
+		Incoming	(leave blank)
+**Inbound Routes**
+Route: Obi110
+	General
+		Description	Obi110
+		DID Number	5555551234 (phone number of line attache to OBI110)
+		Set Destination 
+			Extensions > Add new Extension
+	Advanced defaults
+	Privacy defaults
+	Fax defaults
+	Other defaults
