@@ -7,7 +7,7 @@ Found an old OBI110 I had purchased a few years ago and finally got around to se
 
 ***OBIHAI OBI110 - setting up basic communications between OBI110 and FreePBX***
 
-This document assumes that you have your OBI110 connected to your network and telephone jack, and you have installed [FreePBX 14 (with version 13 of Asterisk)](https://www.freepbx.org/downloads/) on a dedicated computer, which is connected to the same network.  The OBI110 ip address is 192.168.1.13, and FreePBX is at 192.168.1.11.
+This document assumes that you have your OBI110 connected to your network and telephone jack, and you have installed [FreePBX 14 (with version 13 of Asterisk)](https://www.freepbx.org/downloads/) on a dedicated computer, which is connected to the same network.  The OBI110 ip address is 192.168.1.13, FreePBX is at 192.168.1.11, and your router is at 192.168.1.1.
 
 
 **1. OBI110 Network Settings**
@@ -35,7 +35,7 @@ Physical Interfaces > LINE Port
 	DigitMap	        default		
 	InboundCallRoute	SP2(5555551234)	
 	
-(SP2 = SP2 Service.  It puts your telephone number in the SIP2 Inbound route on the OBITrunk1.  SP2 is configured on the OBI110.  Trunk and associated Inbound route is configured on FreePBX server).
+(SP2 = SP2 Service (under Voice Services).  It puts your telephone number in the SIP2 Inbound route on the OBITrunk1.  SP2 is configured on the OBI110.  Trunk and associated Inbound route is configured on FreePBX server).
 
 **2.b. ITSP Profile B**
 (ITSP = Internet Service Provider - i.e. FreePBX)
@@ -259,6 +259,52 @@ Connectivity > Outbound Routes
 	Import/Export Patterns - not applicable
 	
 	Additional Settings - defaults
+
+(POTS = Plain Old Telephone Service = PSNT)
+
+***4. Whitelisting***
+
+The Inbound Route on FreePBX decides what happens when someone calls your phone.  As part of the initial set up, we told FreePBX to send the call to extension 300, and since your phone is linked to this extension through OBI110, any call coming in will ring on your landline phone.
+
+What can we do to prevent robo calls from making your phone ring?  
+
+Spam callers usually use a [predictive dialer](https://en.wikipedia.org/wiki/Predictive_dialer) to connect you to their spam agent.  One way to stop this is to require anyone calling you to dial 8 before allowing the call to go through.  We can use the FreePBX IVR app to do this.
+
+**4.a Record caller prompts**
+
+First, we need to record our the messages we want the caller to hear.
+
+Record the following phrase:
+
+Hello, you've reached 555 555 1234, please press 8 to continue
+
+using an Audio recording app (such as [Audacity](https://www.audacityteam.org/)) and save it as a wav file named:
+
+	greetingAndPressToContinue.wav
+
+(note: if your browser supports it, you can record your prompt in your browser when adding a new recording)
+
+**4.b Upload recording to FreePBX**
+
+Next upload your wavefile to FreePBX
+
+	Admin > System Recordings
+
+Add New System Recording
+Name			greetingAndPressToContinue.wav
+Description		greeting and press key to Continue
+Upload Recording
+    -or-
+Record in Browser
+
+
+
+on FreePBX: Application > IVR
+
+IVR Name 	PressToContinue
+IVR Description	Press key in order to continue with the call
+Announcement
+
 
 
 
