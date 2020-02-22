@@ -1,30 +1,33 @@
-# Robocallblocker (work in progress as Feb 21)
+# Robocallblocker (work in progress)
 Configurations for OBI110 and FreePBX/Asterisk block landline robocallers.
  
 Found an old OBI110 I had purchased a few years ago and finally got around to setting it up to communicate with FreePBX on an old HP mini netbook.  Can now send predictive dialers to Spam voice mail box, and send whitelist to our landline phones.
 
-(Sources: [FreePBX Documentation wiki](https://wiki.freepbx.org/pages/viewpage.action?pageId=4161594), [ObiTalk Forum: Using the Obi 110 as an FXO and FXS Port for FreePBX](http://www.obitalk.com/forum/index.php?topic=1157.msg7261#msg7261) )
+(Sources: [ObiTalk Forum: Using the Obi 110 as an FXO and FXS Port for FreePBX](http://www.obitalk.com/forum/index.php?topic=1157.msg7261#msg7261), [FreePBX Documentation wiki](https://wiki.freepbx.org/pages/viewpage.action?pageId=4161594))
 
 ***OBIHAI OBI110 - setting up basic communications between OBI110 and FreePBX***
 
-**Network Settings**
+This document assumes that you have your OBI110 connected to your network and telephone jack, and you have installed [FreePBX 14 (with version 13 of Asterisk)](https://www.freepbx.org/downloads/) on a dedicated computer, which is connected to the same network.  The OBI110 ip address is 192.168.1.13, and FreePBX is at 192.168.1.11.
+
+
+**1. OBI110 Network Settings**
 
 *Internet Settings*
 
-	IPAddress	192.168.1.13 (need a static ip address for OBI110)
+	IPAddress	192.168.1.13 (requires static ip address)
 	SubnetMask	255.255.255.0
 	DefaultGateway	192.168.1.1 (ip address of your router)
 	DNSServer1	192.168.1.1
 
 ---
 
-***Configure Telephone Line***
+***2. Configure Telephone Line***
 
 Connection from wall telephone jack (rj11) to OBI110 to FreePBX trunk.  
 
 The rj11 jack is connected via a standard telephone cable to OBI110.  The OBI110 is then connected to your home LAN using Ethernet cable so that it can connect to your FreePBX server, also connected to your LAN.
 
-**Line Port**
+**2.a. OBI110 Line Port**
 
 	Enable			selected	
 	DigitMap	        default		
@@ -32,7 +35,7 @@ The rj11 jack is connected via a standard telephone cable to OBI110.  The OBI110
 	
 (SP2 = SP2 Service.  It ps your telephone number to the SIP2 Inbound route on the OBITrunk1.  SP2 is configured on the OBI110.  Trunk and associated Inbound route is configured on FreePBX server).
 
-**ITSP Profile B**
+**2.b. ITSP Profile B**
 (ITSP = Internet Service Provider - i.e. FreePBX)
 
 *General*
@@ -53,7 +56,7 @@ Service Provider Info - defaults
 
 FreePBX server port 5060 points to chan_sip on FreePBX in this configuration; (this is not a default FreePBX setting)
 
-**Voice Services**
+**2.c. Voice Services**
 
 **SP2 Service**
 
@@ -74,9 +77,8 @@ FreePBX server port 5060 points to chan_sip on FreePBX in this configuration; (t
 
 ---
 
-***FREEPBX***	
+**2.d. FREEPBX Trunk**	
 
-**Trunk**
 Connectivity > Trunks
 
 	Trunk Name		OBITRUNK1
@@ -87,10 +89,10 @@ Connectivity > Trunks
 	sip Settings
 
 		Outgoing
-			Trunk Name	OBITRUNK1 (must match OBI11 SP2 configuration)
+			Trunk Name	OBITRUNK1 (must match OBI110 SP2 configuration)
 			PEER Details
-				username=OBITRUNK1 (must match OBI11 SP2 configuration)
-				secret=password (must match OBI11 SP2configuration)
+				username=OBITRUNK1 (must match OBI110 SP2 configuration)
+				secret=password (must match OBI110 SP2configuration)
 				host=dynamic
 				type=friend
 				context=from-trunk
@@ -102,7 +104,8 @@ Connectivity > Trunks
 
 		Incoming	(leave blank)
 
-**Inbound Routes**
+**2.e. FreePBX Inbound Route**
+
 Connectivity > Inbound Routes
 
 Route: Obi110
@@ -137,19 +140,19 @@ Applications > Extensions
 	Pin Sets - defaults
 	Other - defaults
 
-***OBIHAI OBI110 - test connection to FreePBX***
+**2.f OBIHAI OBI110 - test connection to FreePBX**
 
 Status > System Status
 
 scroll down to SP2 Service Status.  Should see something like this:
 
-	Status	Registered (server=192.168.1.13:6060; expire in 46s)	help
+	Status		Registered (server=192.168.1.13:6060; expire in 46s)	help
 
 ---
 
-***PHONE***
+***3. PHONE***
 
-**PHONE Port**
+**3.a. OBI110 PHONE Port**
 
 	Enable			selected		
 	DigitMap	        default		
@@ -169,8 +172,7 @@ Timers - defaults
 
 Tip-Ring Voltage Polarity  - defaults
 
-
-**ITSP Profile A**
+**3.b. ITSP Profile A**
 (ITSP = Internet Service Provider - i.e. FreePBX)
 
 *General*
@@ -189,7 +191,7 @@ Tip-Ring Voltage Polarity  - defaults
 
 (Port 6060 corresponds to non-standard port for Chan PJSIP Settings)
 
-**Voice Services**
+**3.c. Voice Services**
 
 **SP1 Service**
 
@@ -211,10 +213,11 @@ Tip-Ring Voltage Polarity  - defaults
 	MaxSessions	10
 	MWIEnable	selected
 	MessageWaiting	unselected, not default
-	
-***FREEPBX***	
 
-**Outbound Routes**
+---
+
+**3.d. FREEPBX Outbound Routes**	
+
 Connectivity > Outbound Routes
 
 	Route Settings
@@ -229,6 +232,15 @@ Connectivity > Outbound Routes
 		81|NXXXXXX
 		81|X11
 		
-	Import/Export Patterns - not appicable
+	Import/Export Patterns - not applicable
 	
 	Additional Settings - defaults
+
+
+**2.f OBIHAI OBI110 - test connection to FreePBX**
+
+Status > System Status
+
+scroll down to SP1 Service Status.  Should see something like this:
+
+	Status 		Registered (server=192.168.1.13:5060; expire in 34s)
