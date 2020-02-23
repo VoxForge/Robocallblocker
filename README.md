@@ -268,7 +268,9 @@ The Inbound Route on FreePBX decides what happens when someone calls your phone.
 
 What can we do to prevent robo calls from making your phone ring?  
 
-Spam callers usually use a [predictive dialer](https://en.wikipedia.org/wiki/Predictive_dialer) to connect you to their spam agent.  One way to stop this is to require anyone calling you to dial 8 before allowing the call to go through.  We can use the FreePBX IVR app to do this.
+Spam callers usually use a [predictive dialer](https://en.wikipedia.org/wiki/Predictive_dialer) to connect you to their spam agent.  What happens is that the Robocaller calls many nuumbers, and if someone answers, proceeds to try to match them with an available attendant.  But the robocallers are dumb, and if you ask them to press a digit, they cannot (not yet at least - voice spammers are beginning to use speech recogniion, more on that later...).
+
+Therefore, to prevent roboCallers, you need require anyone calling you to dial 8 before allowing the call to go through.  We can use the FreePBX IVR app to do this.
 
 **4.a Record caller prompts**
 
