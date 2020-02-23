@@ -274,15 +274,15 @@ Spam callers usually use a [predictive dialer](https://en.wikipedia.org/wiki/Pre
 
 First, we need to record our the messages we want the caller to hear.
 
-Record the following phrase:
+Using an Audio recording app (such as [Audacity](https://www.audacityteam.org/)), record the following phrase:
 
-Hello, you've reached 555 555 1234, please press 8 to continue
+	Hello, you've reached 555 555 1234, please press 8 to continue
 
-using an Audio recording app (such as [Audacity](https://www.audacityteam.org/)) and save it as a wav file named:
+and save it as a wav file named:
 
 	greetingAndPressToContinue.wav
 
-(note: if your browser supports it, you can record your prompt in your browser when adding a new recording)
+(note: if your browser supports it, you can record your prompt in your browser when adding a new recording - see: Admin > System Recordings, then 'Record in Browser')
 
 **4.b Upload recording to FreePBX**
 
@@ -291,20 +291,27 @@ Next upload your wavefile to FreePBX
 	Admin > System Recordings
 
 Add New System Recording
-Name			greetingAndPressToContinue.wav
-Description		greeting and press key to Continue
-Upload Recording
-    -or-
-Record in Browser
 
+	Name			greetingAndPressToContinue.wav
+	Description		greeting and press key to Continue
+	Upload Recording
 
+**4.c Setup IVR**
 
 on FreePBX: Application > IVR
 
-IVR Name 	PressToContinue
-IVR Description	Press key in order to continue with the call
-Announcement
-
-
-
-
+	IVR Name 		PressToContinue
+	IVR Description		Press key in order to continue 
+	Announcement		greetingAndPressToContinue.wav
+	Enable Direct Dial 	Disabled
+	Invalid Recording	Default
+	Invalid Destination	Extensions: 400 spamExtension
+	Timeout Retry Recording	Default
+	Timeout Recording	Default
+	Invalid Recording	Extensions: 400 spamExtension
+	Return to IVR after VM	No
+	IVR Entries
+		Digits 		8
+		Destination 	Extensions: 300 spamExtension
+		return		No
+		
