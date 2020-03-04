@@ -353,3 +353,5 @@ select: Intrusion Detection
 Add the ip address of the computer you are using to remotely access the FreePBX server to the Whitelist section (you may have to do this from a different computer, or restart FreePBX - note you only have a minute or two before fail2ban blocks your ip address again).
 
 Submit your change.
+
+**5. Sending email notifications of Voice Mails**
