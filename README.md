@@ -404,7 +404,7 @@ terminal by the software.  OBi devices support the following terminals:
 
 Each route in a terminal's OutboundCallRoute is seperated by a comma. Lets break them out and analyze each in turn:
 
-*****{([1-9]x?*(Mpli)):pp}*****
+*****{([1-9]x?&#42;(Mpli)):pp}*****
 
 	This route is not required because it routes to pp, which is used for Obi to Obi calls, and therefore can be deleted.
 
@@ -418,7 +418,7 @@ Each route in a terminal's OutboundCallRoute is seperated by a comma. Lets break
 
 ****{&#42;&#42;&#42;:aa2}****
 
-	If the caller dials ***, then route call directly Obi110 System Auto Attendant #2	
+	If the caller dials ***, then route call directly Obi110 Device Configuration Menu	
 
 ****{(<&#42;&#42;1:>(Msp1)):sp1}****
 
