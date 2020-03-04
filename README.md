@@ -368,7 +368,12 @@ Another option in the default OBI110 outbound call routes is to:
 
 Since we are not using SIP calling, we don't really need FreePBX for outbound calls, so lets find a more direct way to bypass FreePBX and make calls without having to press **8...
 
+[Digimaps and call routing tutorial](http://www.obitalk.com/forum/index.php?OBTKSID=9nhu8corvcoalmgq7q38umiso5&action=dlattach;topic=9104.0;attach=878)
+
+Default DigitMap and OutboundCallRoute
+	DigitMap: ([1-9]x?*(Mpli)|[1-9]|[1-9][0-9]|911|**0|***|#|**1(Msp1)|**2(Msp2)|**8(Mli)|**9(Mpp)|(Mpli))
 	OutboundCallRoute: {([1-9]x?*(Mpli)):pp},{(<#:>|911):li},{**0:aa},{***:aa2},{(<**1:>(Msp1)):sp1},{(<**2:>(Msp2)):sp2},{(<**8:>(Mli)):li},{(<**9:>(Mpp)):pp},{(Mpli):pli}
+
 
 
 TODO:
