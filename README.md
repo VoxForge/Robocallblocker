@@ -342,10 +342,14 @@ Applications > Extensions
 	Pin Sets - defaults
 	Other - defaults
 
-**Troubleshooting**
+**5. Troubleshooting**
+
 FreePBX uses [fail2ban](https://en.wikipedia.org/wiki/Fail2ban). If as you are setting up FreePBX and logging on and logging off you get locked out for no apparent reason, it is likely you have been caught by fail2ban.  
 
 Go to Admin > System Admin
-select Intrusion Detection
+
+select: Intrusion Detection
 
 Add the ip address of the computer you are using to remotely access the FreePBX server to the Whitelist section (you may have to do this from a different computer, or restart FreePBX - note you only have a minute or two before fail2ban blocks your ip address again).
+
+Submit your change.
