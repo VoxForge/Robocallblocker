@@ -1,7 +1,9 @@
 # Robocallblocker (work in progress)
 Configurations for OBI110 and FreePBX/Asterisk block landline robocallers.
  
-We have an old-school landline phone for home use and have been getting many SPAM calls. This is an approach to blocking those calls using an OBI110 [ATA](https://en.wikipedia.org/wiki/Analog_telephone_adapter) and [FreePBX](https://en.wikipedia.org/wiki/FreePBX).  It simply asks callers to press a key, and if they do, IT THEN transfers the call to our regular [landline](https://en.wikipedia.org/wiki/Landline) phones.  If they don't, it sends the call to a SPAM voice mail.  A whitelist can be set up to bypass the IVR Spam filter altogether and allow known callers to ring your phone directly.
+We have an old-school landline phone for home use and have been getting many SPAM calls. This is an approach to blocking those calls using an OBI110 [ATA](https://en.wikipedia.org/wiki/Analog_telephone_adapter) and [FreePBX](https://en.wikipedia.org/wiki/FreePBX).  
+
+It simply asks callers to press a key, and if they do, it then transfers the call to our regular [landline](https://en.wikipedia.org/wiki/Landline) phone.  If no one answers, it sends the call to a good voice mail extension.  If they don't a key, it sends the call to a SPAM voice mail.  A whitelist allows known callers bypass the IVR Spam filter altogether and ring your phone directly.
 
 The ATA used in this document is an old OBI110 I had purchased a few years ago and finally got around to setting up to communicate with FreePBX on an old HP mini netbook. 
 
@@ -9,7 +11,9 @@ The ATA used in this document is an old OBI110 I had purchased a few years ago a
 
 ***OBIHAI OBI110 - setting up basic communications between OBI110 and FreePBX***
 
-This document assumes that you have your OBI110 connected to your network and telephone jack, and you have installed [FreePBX 14 (with version 13 of Asterisk)](https://www.freepbx.org/downloads/) on a dedicated computer, which is connected to the same network.  The OBI110 ip address is 192.168.1.13, FreePBX is at 192.168.1.11, and your router is at 192.168.1.1.
+This document assumes that you have your OBI110 connected to your network and telephone jack, and have installed [FreePBX 14 (with version 13 of Asterisk)](https://www.freepbx.org/downloads/) on a dedicated computer, which is connected to the same network as the OBI110.  
+
+The OBI110 ip address is assumed to be 192.168.1.13, FreePBX is at 192.168.1.11, and your router is at 192.168.1.1.  Change this to reflect your network settings.  This document also assumes that your home phone number is 555-555-1234 - change this to your phone number.
 
 
 **1. OBI110 Network Settings**
