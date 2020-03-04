@@ -400,7 +400,8 @@ terminal by the software.  OBi devices support the following terminals:
 [source: Obi DigitMap CallRoute Tutorial](http://www.obitalk.com/forum/index.php?OBTKSID=9nhu8corvcoalmgq7q38umiso5&action=dlattach;topic=9104.0;attach=878)
 
 ****DigitMap - Review****
-Each rule in a DigitMap acts as a filter and is seperated by a comma. Lets break them out and analyze each in turn:
+
+Each route in a terminal's OutboundCallRoute is seperated by a comma. Lets break them out and analyze each in turn:
 
 *****{([1-9]x?*(Mpli)):pp}*****
 
@@ -435,18 +436,9 @@ Each rule in a DigitMap acts as a filter and is seperated by a comma. Lets break
 	routes to pp, which is used for Obi to Obi calls, and therefore can be deleted.
 
 ****{(Mpli):pli}****
-
-	(Mpli): (M = Embedded Digit Map; pli = Primary line)
-		Note that this is references the Digitmap for the Primary line, which we set to SP1 Service, whose Digitmap is described in ITSP Profile A:
 	
-	(1xxxxxxxxxx|<1>[2-9]xxxxxxxxx|011xx.|xx.|(Mipd)|[^*#]@@.)
-
-	Expanding the rule, we get:
+	This route is not required because it routes to pli, which is the primary line which corresponds to SP1 Service, and since we are not using VoIP calling, we can be delete it.
 	
-	*****{([1-9]x?*(1xxxxxxxxxx|<1>[2-9]xxxxxxxxx|011xx.|xx.|(Mipd)|[^*#]@@.)):pli}*****	
-
-Therefore, to be able to dial a number as one would on a regular phone, we need to simply delete the first route ( {([1-9]x?*(Mpli)):pp} ) because it prevents this last route from ever being executed.
-
 
 
 
