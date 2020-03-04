@@ -409,15 +409,15 @@ Each route in a terminal's OutboundCallRoute is seperated by a comma. Lets break
 
 ****{(<#:>|911):li}****
 
-	If the caller dials #911 or 911, then route call directly to Line 
+	If the caller dials #911 or 911, then route call directly to Line Port
 
 ****{**0:aa}****
 
-	If the caller dials **0, then route call directly auto Attendant
+	If the caller dials **0, then route call directly Auto Attendant
 
 ****{***:aa2}****
 
-	If the caller dials ***, then route call directly auto Attendant #2	
+	If the caller dials ***, then route call directly Auto Attendant #2	
 
 ****{(<**1:>(Msp1)):sp1}****
 
@@ -429,7 +429,7 @@ Each route in a terminal's OutboundCallRoute is seperated by a comma. Lets break
 
 ****{(<**8:>(Mli)):li}****
 
-	If the caller dials **8, then bypass FreePBX, and make a call as you normally would.
+	If the caller dials **8, then bypass FreePBX, and make a call as you normally would on PSTN.
 
 ****{(<**9:>(Mpp)):pp}****
 
@@ -448,11 +448,13 @@ Therefore, to be able to dial a number as one would on a regular phone, bypasing
 	
 	(xxxxxxxS4|1xxxxxxxxxx|xx.)
 
-Lets change this so that it will accept 10 digit calls (7 digit call prefixed by area code for local calls), and add some spaces for readability (which is allowed in OBi110):
+Lets change this so that it will accept 10 digit calls (7 digit call prefixed by 3 digit area code for local calls), and add some spaces for readability (which is allowed in OBi110):
 
 	([2-9]xx xxx xxxxS2|1 xxx xxx xxxx|xx.)
 
-	{{(<#:>|911):li},{**0:aa},{***:aa2},{(<**1:>(Msp1)):sp1},{(<**8:>(Mli)):li},{(Mpli):pli}
+Therefore the final DigitMap for the Phone terminal should look like this:
+
+	{{(<#:>|911):li},{**0:aa},{***:aa2},{(<**1:>(Msp1)):sp1},{(<**8:>(Mli)):li},{(Mli):li}}
 
 
 
