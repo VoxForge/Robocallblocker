@@ -136,6 +136,7 @@ Applications > Extensions
 	Voicemail
 		Enabled - selected
 		Voicemail Password 1234 (numeric password used to access voice mail from phone handset)
+		Disable (*) in Voicemail Menu - No
 
 	Find Me/Follow Me - defaults
 	Advanced - defaults
@@ -328,7 +329,8 @@ Applications > Extensions
 	Voicemail
 		Enabled - selected
 		Voicemail Password 1234 (numeric password used to access voice mail from phone handset)
-
+		Disable (*) in Voicemail Menu - Yes
+		
 	Find Me/Follow Me - defaults
 	Advanced - defaults
 	Pin Sets - defaults
