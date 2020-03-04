@@ -420,19 +420,19 @@ Each route in a terminal's OutboundCallRoute is seperated by a comma. Lets break
 
 	If the caller dials ***, then route call directly Obi110 System Auto Attendant #2	
 
-****{(<**1:>(Msp1)):sp1}****
+****{(<&#42;&#42;1:>(Msp1)):sp1}****
 
 	If the caller dials **1, then connect call to FreePBX (to listen to voice mail, etc)
 	
-****{(<**2:>(Msp2)):sp2}****
+****{(<&#42;&#42;2:>(Msp2)):sp2}****
 
 	not used, delete
 
-****{(<**8:>(Mli)):li}****
+****{(<&#42;&#42;8:>(Mli)):li}****
 
 	If the caller dials **8, then bypass FreePBX, and make a call as you normally would on PSTN.
 
-****{(<**9:>(Mpp)):pp}****
+****{(<&#42;&#42;9:>(Mpp)):pp}****
 
 	routes to pp, which is used for Obi to Obi calls, and therefore can be deleted.
 
