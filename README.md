@@ -354,6 +354,22 @@ Add the ip address of the computer you are using to remotely access the FreePBX 
 
 Submit your change.
 
+**5. Direct Outbound Calling**
+Default OBI110 outbound call routes send you through FreePBX and then you must use the previouls configure FreePBX outbound route to call as you normally would.  So to make a call to the [PSTN](https://en.wikipedia.org/wiki/Public_switched_telephone_network), you need to:
+
+	a. press **1 (to access FreePBX )
+	b. press 81# (to access pstn)
+	c. dial your number
+
+Another option in the default OBI110 outbound call routes is to:
+
+	a. press **8 (to connect to line port on OBI110, bypassing FreePBX altogether)
+	b. dial your number
+
+Since we are not using SIP calling, we don't really need FreePBX for outbound calls, so lets find a more direct way to bypass FreePBX and make calls without having to press **8...
+
+	OutboundCallRoute: {([1-9]x?*(Mpli)):pp},{(<#:>|911):li},{**0:aa},{***:aa2},{(<**1:>(Msp1)):sp1},{(<**2:>(Msp2)):sp2},{(<**8:>(Mli)):li},{(<**9:>(Mpp)):pp},{(Mpli):pli}
+
 
 TODO:
 **5. Sending email notifications of Voice Mails**
