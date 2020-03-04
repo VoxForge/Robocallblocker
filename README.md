@@ -3,7 +3,7 @@ Configurations for OBI110 and FreePBX/Asterisk block landline robocallers.
  
 We have an old-school landline phone for home use and have been getting many SPAM calls. This is an approach to blocking those calls using an OBI110 [ATA](https://en.wikipedia.org/wiki/Analog_telephone_adapter) and [FreePBX](https://en.wikipedia.org/wiki/FreePBX).  
 
-It simply asks callers to press a key, and if they do, it then transfers the call to our regular [landline](https://en.wikipedia.org/wiki/Landline) phone.  If no one answers, it sends the call to a good voice mail extension.  If they don't a key, it sends the call to a SPAM voice mail.  A whitelist allows known callers bypass the IVR Spam filter altogether and ring your phone directly.
+It simply asks callers to press a key, and if they do, it then transfers the call to our regular [landline](https://en.wikipedia.org/wiki/Landline) phone.  If no one answers, it sends the call to a good voice mail extension.  If they don't press a key, it sends the call to a SPAM voice mail.  A whitelist allows known callers bypass the IVR Spam filter altogether and ring your phone directly.
 
 The ATA used in this document is an old OBI110 I had purchased a few years ago and finally got around to setting up to communicate with FreePBX on an old HP mini netbook. 
 
@@ -354,4 +354,6 @@ Add the ip address of the computer you are using to remotely access the FreePBX 
 
 Submit your change.
 
+
+TODO:
 **5. Sending email notifications of Voice Mails**
