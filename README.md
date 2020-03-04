@@ -436,7 +436,19 @@ Each rule in a DigitMap acts as a filter and is seperated by a comma. Lets break
 
 ****{(Mpli):pli}****
 
+	(Mpli): (M = Embedded Digit Map; pli = Primary line)
+		Note that this is references the Digitmap for the Primary line, which we set to SP1 Service, whose Digitmap is described in ITSP Profile A:
 	
+	(1xxxxxxxxxx|<1>[2-9]xxxxxxxxx|011xx.|xx.|(Mipd)|[^*#]@@.)
+
+	Expanding the rule, we get:
+	
+	*****{([1-9]x?*(1xxxxxxxxxx|<1>[2-9]xxxxxxxxx|011xx.|xx.|(Mipd)|[^*#]@@.)):pli}*****	
+
+Therefore, to be able to dial a number as one would on a regular phone, we need to simply delete the first route ( {([1-9]x?*(Mpli)):pp} ) because it prevents this last route from ever being executed.
+
+
+
 
 
 TODO:
