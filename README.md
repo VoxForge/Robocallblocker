@@ -416,7 +416,7 @@ Each route in a terminal's OutboundCallRoute is seperated by a comma. Lets break
 
 	If the caller dials **0, then route call directly Obi110 Auto Attendant
 
-****{***:aa2}****
+****{'***:aa2}****
 
 	If the caller dials ***, then route call directly Obi110 System Auto Attendant #2	
 
