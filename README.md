@@ -354,6 +354,7 @@ Add the ip address of the computer you are using to remotely access the FreePBX 
 
 Submit your change.
 
+
 **5. Direct Outbound Calling**
 Default OBI110 outbound call routes send you through FreePBX and then you must use the previouls configure FreePBX outbound route to call as you normally would.  So to make a call to the [PSTN](https://en.wikipedia.org/wiki/Public_switched_telephone_network), you need to:
 
@@ -392,14 +393,14 @@ We use a digit map to match or transform a number [...] that’s been entered. O
 Each physical connection [...] on the OBi device is addressed as a logical
 terminal by the software.  OBi devices support the following terminals:
 
-	Phone (FXS) Ports - PH1
-	Line (FXO) Ports - LN1
-	IP Voice Services - SP1, SP2
+	Phone (FXS) Ports - ph1
+	Line (FXO) Ports - ln1
+	IP Voice Services - sp1, sp2
 	...
 
 [source: Obi DigitMap CallRoute Tutorial](http://www.obitalk.com/forum/index.php?OBTKSID=9nhu8corvcoalmgq7q38umiso5&action=dlattach;topic=9104.0;attach=878)
 
-****DigitMap - Review****
+****OutboundCallRoute - Review****
 
 Each route in a terminal's OutboundCallRoute is seperated by a comma. Lets break them out and analyze each in turn:
 
@@ -413,11 +414,11 @@ Each route in a terminal's OutboundCallRoute is seperated by a comma. Lets break
 
 ****{**0:aa}****
 
-	If the caller dials **0, then route call directly Auto Attendant
+	If the caller dials **0, then route call directly Obi110 Auto Attendant
 
 ****{***:aa2}****
 
-	If the caller dials ***, then route call directly Auto Attendant #2	
+	If the caller dials ***, then route call directly Obi110 System Auto Attendant #2	
 
 ****{(<**1:>(Msp1)):sp1}****
 
@@ -454,7 +455,7 @@ Lets change this so that it will accept 10 digit calls (7 digit call prefixed by
 
 Therefore the final DigitMap for the Phone terminal should look like this:
 
-	{{(<#:>|911):li},{**0:aa},{***:aa2},{(<**1:>(Msp1)):sp1},{(<**8:>(Mli)):li},{(Mli):li}}
+	{{(<#:>|911):li},{**0:aa},{***:aa2},{(<**1:>(Msp1)):sp1},{(<**8:>(Mli)):li},{(Mli1):li1}}
 
 
 
