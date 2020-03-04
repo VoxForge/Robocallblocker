@@ -439,6 +439,20 @@ Each route in a terminal's OutboundCallRoute is seperated by a comma. Lets break
 	
 	This route is not required because it routes to pli, which is the primary line which corresponds to SP1 Service, and since we are not using VoIP calling, we can be delete it.
 	
+Therefore, to be able to dial a number as one would on a regular phone, bypasing FreePBX, we need add a route that goes directly to the OBI110 Line Port:
+
+****{(Mli):li}****
+
+(Mli): (M = Embedded Digit Map; li = Line)
+	Note that this references the Digitmap for the Line Port (your telephone jack), whose default Digitmap is as follows:
+	
+	(xxxxxxxS4|1xxxxxxxxxx|xx.)
+
+Lets change this so that it will accept 10 digit calls (7 digit call prefixed by area code for local calls), and add some spaces for readability (which is allowed in OBi110):
+
+	([2-9]xx xxx xxxxS2|1 xxx xxx xxxx|xx.)
+
+	{{(<#:>|911):li},{**0:aa},{***:aa2},{(<**1:>(Msp1)):sp1},{(<**8:>(Mli)):li},{(Mpli):pli}
 
 
 
