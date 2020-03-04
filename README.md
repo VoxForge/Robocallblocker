@@ -368,12 +368,39 @@ Another option in the default OBI110 outbound call routes is to:
 
 Since we are not using SIP calling, we don't really need FreePBX for outbound calls, so lets find a more direct way to bypass FreePBX and make calls without having to press **8...
 
-[Digimaps and call routing tutorial](http://www.obitalk.com/forum/index.php?OBTKSID=9nhu8corvcoalmgq7q38umiso5&action=dlattach;topic=9104.0;attach=878)
 
 Default DigitMap and OutboundCallRoute
+
 	DigitMap: ([1-9]x?*(Mpli)|[1-9]|[1-9][0-9]|911|**0|***|#|**1(Msp1)|**2(Msp2)|**8(Mli)|**9(Mpp)|(Mpli))
+	
 	OutboundCallRoute: {([1-9]x?*(Mpli)):pp},{(<#:>|911):li},{**0:aa},{***:aa2},{(<**1:>(Msp1)):sp1},{(<**2:>(Msp2)):sp2},{(<**8:>(Mli)):li},{(<**9:>(Mpp)):pp},{(Mpli):pli}
 
+
+[source](http://www.obitalk.com/forum/index.php?OBTKSID=9nhu8corvcoalmgq7q38umiso5&action=dlattach;topic=9104.0;attach=878)
+
+****DigitMap****
+
+A digit map can be used to perform the following tasks:
+	• Ensure a complete number is dialed
+	• Transform dialed digits
+	• Block numbers from being dialed
+	
+****Outbound Call Routes****
+
+We use a digit map to match or transform a number [...] that’s been entered. Once the
+digit map has matched the entered sequence, we can then use the outbound call route to
+direct the call to the correct terminal on the OBi. The outbound call route directs the call
+from the perspective of the user placing the call from the OBi device.
+
+****Terminals on the OBi****
+
+Each physical connection [...] on the OBi device is addressed as a logical
+terminal by the software.  OBi devices support the following terminals:
+
+	Phone (FXS) Ports - PH1
+	Line (FXO) Ports - LN1
+	IP Voice Services - SP1, SP2
+	...
 
 
 TODO:
