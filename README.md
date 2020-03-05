@@ -399,7 +399,12 @@ Another option in the default OBI110 outbound call routes is to:
 	a. press **8 (to connect to line port on OBI110, bypassing FreePBX altogether)
 	b. dial your number
 
-Since we are not using SIP calling, we don't really need FreePBX for outbound calls, so lets find a more direct way to bypass FreePBX and make calls without having to press **8...
+A final option in the default OBI110 outbound call routes is to:
+
+	a. press # (to connect to line port on OBI110, bypassing FreePBX altogether)
+	b. dial your number
+
+Since we are not using SIP calling, we don't really need FreePBX for outbound calls, so lets find a more direct way to bypass FreePBX and make calls without having to press &#42;&#42;8 or having to press the pound key (#).
 
 ***DigitMap and OutboundCallRoute - Defaults***
 
