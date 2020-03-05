@@ -344,6 +344,8 @@ Applications > Extensions
 
 **5. Troubleshooting**
 
+***5.a fail2ban***
+
 FreePBX uses [fail2ban](https://en.wikipedia.org/wiki/Fail2ban). If as you are setting up FreePBX and logging on and logging off, and you get locked out for no apparent reason, it is likely you have been caught by fail2ban.  
 
 Go to Admin > System Admin
@@ -354,8 +356,31 @@ Add the ip address of the computer you are using to remotely access the FreePBX 
 
 Submit your change.
 
+***5.c Debugging calls***
 
-**5. Direct Outbound Calling**
+To debug inbound calls by listening to the full conversation, use the following settings:
+
+First set FreePBX to record all incoming calls
+
+Connectivity > Inbound Routes
+
+edit *Obi110* Inbound Route
+
+	Other Tab
+
+		Call Recording: Force
+
+Next, set FreePBX record entire conversation (including IVR prompts and replies)
+
+Settings > Advanced Settings
+
+Call Recording
+
+	Call Record Options: No
+
+(KEYWORD:CALL_REC_OPTION - if set to Yes, it will not begin recording unless a call is bridged to another channel - i.e. connected to an extension)
+
+**6. Direct Outbound Calling**
 
 Default OBI110 outbound call routes send you through FreePBX and then you must use the previouls configure FreePBX outbound route to call as you normally would.  So to make a call to the [PSTN](https://en.wikipedia.org/wiki/Public_switched_telephone_network), you need to:
 
