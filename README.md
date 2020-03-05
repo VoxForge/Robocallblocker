@@ -455,9 +455,13 @@ Lets change this so that it will accept 10 digit calls (7 digit call prefixed by
 
 	([2-9]xx xxx xxxxS2|1 xxx xxx xxxx|xx.)
 
-Therefore the final DigitMap for the Phone terminal should look like this:
+Therefore the final DigitMap/OutboundCallRoute for the Phone terminal should look like this:
 
-	{{(<#:>|911):li},{**0:aa},{***:aa2},{(<**1:>(Msp1)):sp1},{(<**8:>(Mli)):li},{(Mli1):li1}}
+	DigitMap: ([1-9]|[1-9][0-9]|911|**0|***|#|**1(Msp1)|**8(Mli)|(Mpli))
+	OutboundCallRoute: {(<#:>|911):li},{**0:aa},{***:aa2},{(<**1:>(Msp1)):sp1},{(<**8:>(Mli)):li}
+	CallReturnDigitMaps: Default
+
+
 
 
 
