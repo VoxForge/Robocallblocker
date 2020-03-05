@@ -474,7 +474,7 @@ Each route in a terminal's OutboundCallRoute is separated by a comma. Lets break
 	
 ****{(<&#42;&#42;2:>(Msp2)):sp2}****
 
-	not used, delete
+	sp2 is used for outbound calling from FreePBX, no reason to access by phone, delete
 
 ****{(<&#42;&#42;8:>(Mli)):li}****
 
