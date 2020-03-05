@@ -315,12 +315,20 @@ Add New System Recording
 
 on FreePBX: Application > IVR
 
+	IVR General Options
+
 	IVR Name 		PressToContinue
 	IVR Description		Press key in order to continue 
+
+	IVR DTMF Options
+	
 	Announcement		greetingAndPressToContinue.wav
 	Enable Direct Dial 	Disabled
+	Timeout			5 (default of 10 seconds is too long)
+	Invalid Retries		1 (default is 3; one is plenty to then go to Voice Mail)
 	Invalid Recording	Default
 	Invalid Destination	Extensions: 400 spamExtension
+	Timeout Retries		1 (default of 3 is frustrating for users who just want to leave a VM but their keypresses are not being recognized - for a variety of reason)
 	Timeout Retry Recording	Default
 	Timeout Recording	Default
 	Invalid Recording	Extensions: 400 spamExtension
