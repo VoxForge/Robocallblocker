@@ -344,7 +344,7 @@ Applications > Extensions
 
 **5. Troubleshooting**
 
-FreePBX uses [fail2ban](https://en.wikipedia.org/wiki/Fail2ban). If as you are setting up FreePBX and logging on and logging off you get locked out for no apparent reason, it is likely you have been caught by fail2ban.  
+FreePBX uses [fail2ban](https://en.wikipedia.org/wiki/Fail2ban). If as you are setting up FreePBX and logging on and logging off, and you get locked out for no apparent reason, it is likely you have been caught by fail2ban.  
 
 Go to Admin > System Admin
 
@@ -356,6 +356,7 @@ Submit your change.
 
 
 **5. Direct Outbound Calling**
+
 Default OBI110 outbound call routes send you through FreePBX and then you must use the previouls configure FreePBX outbound route to call as you normally would.  So to make a call to the [PSTN](https://en.wikipedia.org/wiki/Public_switched_telephone_network), you need to:
 
 	a. press **1 (to access FreePBX )
@@ -403,7 +404,7 @@ terminal by the software.  OBi devices support the following terminals:
 
 ****OutboundCallRoute - Review****
 
-Each route in a terminal's OutboundCallRoute is seperated by a comma. Lets break them out and analyze each in turn:
+Each route in a terminal's OutboundCallRoute is separated by a comma. Lets break them out and analyze each in turn:
 
 *****{([1-9]x?&#42;(Mpli)):pp}*****
 
