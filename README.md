@@ -131,7 +131,6 @@ Route: Obi110
 			Extensions > Add new Extension
 			
 	Advanced - defaults
-	Privacy - defaults
 	Fax - defaults
 	Other - defaults
 
