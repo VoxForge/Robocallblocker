@@ -380,6 +380,7 @@ Since we are not using SIP calling, we don't really need FreePBX for outbound ca
 ****DigitMap****
 
 A digit map can be used to perform the following tasks:
+
 	• Ensure a complete number is dialed
 	• Transform dialed digits
 	• Block numbers from being dialed
