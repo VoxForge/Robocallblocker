@@ -43,6 +43,12 @@ Physical Interfaces > LINE Port
 	
 (SP2 = SP2 Service (under Voice Services).  It puts your telephone number in the SIP2 Inbound route on the OBITrunk1.  SP2 is configured on the OBI110.  Trunk and associated Inbound route is configured on FreePBX server).
 
+I had problems with some calls not where [DTMF](https://en.wikipedia.org/wiki/Dual-tone_multi-frequency_signaling) tones (key presses) were not being loud enough, to increase sensitivity, reduce from default of 5 to 2:
+
+	ChannelRxGain: 2
+
+
+
 **2.b. ITSP Profile B**
 (ITSP = Internet Service Provider - i.e. FreePBX)
 
@@ -356,7 +362,7 @@ Add the ip address of the computer you are using to remotely access the FreePBX 
 
 Submit your change.
 
-***5.c Debugging calls***
+***5.b Debugging calls***
 
 To debug inbound calls by listening to the full conversation, use the following settings:
 
