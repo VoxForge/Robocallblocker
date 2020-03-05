@@ -388,7 +388,7 @@ Call Recording
 
 **6. Direct Outbound Calling**
 
-Default OBI110 outbound call routes send you through FreePBX and then you must use the previouls configure FreePBX outbound route to call as you normally would.  So to make a call to the [PSTN](https://en.wikipedia.org/wiki/Public_switched_telephone_network), you need to:
+Default OBI110 outbound call routes send you through FreePBX and then you must use the previously configured FreePBX outbound route to call as you normally would.  So to make a call to the [PSTN](https://en.wikipedia.org/wiki/Public_switched_telephone_network), you need to:
 
 	a. press **1 (to access FreePBX )
 	b. press 81# (to access pstn)
@@ -419,11 +419,11 @@ A digit map can be used to perform the following tasks:
 	
 ****Outbound Call Routes****
 
-We use a digit map to match or transform a number [...] that’s been entered. Once the digit map has matched the entered sequence, we can then use the outbound call route to direct the call to the correct terminal on the OBi. The outbound call route directs the call from the perspective of the user placing the call from the OBi device.
+We use a digit map to match or transform a number that’s been entered. Once the digit map has matched the entered sequence, we can then use the outbound call route to direct the call to the correct terminal on the OBi. The outbound call route directs the call from the perspective of the user placing the call from the OBi device.
 
 ****Terminals on the OBi****
 
-Each physical connection [...] on the OBi device is addressed as a logical
+Each physical connection on the OBi device is addressed as a logical
 terminal by the software.  OBi devices support the following terminals:
 
 	Phone (FXS) Ports - ph1
@@ -443,7 +443,9 @@ Each route in a terminal's OutboundCallRoute is separated by a comma. Lets break
 
 ****{(<#:>|911):li}****
 
-	If the caller dials #911 or 911, then route call directly to Line Port
+	Two rules:
+		a. If the caller dials # followed by any other digits, then route call directly to Line Port
+		b. If caller dials 911, then route call directly to Line Port
 
 ****{&#42;&#42;0:aa}****
 
@@ -472,32 +474,29 @@ Each route in a terminal's OutboundCallRoute is separated by a comma. Lets break
 ****{(Mpli):pli}****
 	
 	This route is not required because it routes to pli, which is the primary line which corresponds to SP1 Service, and since we are not using VoIP calling, we can be delete it.
-	
-Therefore, to be able to dial a number as one would on a regular phone, bypasing FreePBX, we need add a route that goes directly to the OBI110 Line Port:
 
-****{(Mli):li}****
+****User Defined Digit Map****
 
-(Mli): (M = Embedded Digit Map; li = Line)
-	Note that this references the Digitmap for the Line Port (your telephone jack), whose default Digitmap is as follows:
-	
-	(xxxxxxxS4|1xxxxxxxxxx|xx.)
+Let's create a user define digit map to be able to dial a number as one would on a regular phone, bypasing FreePBX.  
 
-Lets change this so that it will accept 10 digit calls (7 digit call prefixed by 3 digit area code for local calls), and add some spaces for readability (which is allowed in OBi110):
+First we need add a DigitMap entry that filters the types of call we want to go to the OBI110 Line Port:
 
-	([2-9]xx xxx xxxxS2|1 xxx xxx xxxx|xx.)
+*User Settings* > *User Defined Digit Maps*
 
-Therefore the final DigitMap/OutboundCallRoute for the Phone terminal should look like this:
+	label:	dm2
+	DigitMap: (1xxxxxxxxxx|[2-9]xxxxxxxxx)
+
+So now for outgoing calls using 10 digit local number, or long distance number prefixed by 1, you can access the PSTN directly rather than pressing pound key ('#') or using &#42;&#42;8 to access the PSTN network.  
+
+(Note: these may need to be changed if you are in a different country or want direct access to other numbers, or just prefix all your calls with # to access the PSTN)
+
+Then add a reference to the User Defined DigitMap you just created (dm2) in the final DigitMap/OutboundCallRoute for the Phone terminal.  It should look like this:
 
 	DigitMap: (911|**0|***|#|(Mdm2)|**1(Msp1)|**8(Mli))
 	OutboundCallRoute: {(<#:>|911):li},{**0:aa},{***:aa2},{(<**1:>(Msp1)):sp1},{(<**8:>(Mli)):li},{(Mdm2):li}
 	CallReturnDigitMaps: Default
 
-Then go to *User Settings* > *User Defined Digit Maps*
 
-	label:	dm2
-	DigitMap: (1xxxxxxxxxx|[2-9]xxxxxxxxx)
-
-So now for outgoing calls using 10 digit local number, or long distance number prefixed by 1, you can access the PSTN directly rather than pressing pound key ('#') or using &#42;&#42;8 to access the PSTN network.  These may need to be changed if you are in a different country or want direct access to other numbers.
 
 
 
