@@ -466,7 +466,7 @@ Then go to *User Settings* > *User Defined Digit Maps*
 	label:	dm2
 	DigitMap: (1xxxxxxxxxx|[2-9]xxxxxxxxx)
 
-
+So now for outgoing calls using 10 digit local number, or long distance number prefixed by 1, you can access the PSTN directly rather than pressing pound key ('#') or using &#42;&#42;8 to access the PSTN network.  These may need to be changed if you are in a different country or want direct access to other numbers.
 
 
 
