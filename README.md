@@ -502,9 +502,11 @@ First we need add a DigitMap entry that filters the types of call we want to go 
 *User Settings* > *User Defined Digit Maps*
 
 	label:	dm2
-	DigitMap: (1xxxxxxxxxx|[2-9]xxxxxxxxx)
+	DigitMap: (1xxxxxxxxxx|[2-9]xxxxxxxxx|*98)
 
 So now for outgoing calls using 10 digit local number, or long distance number prefixed by 1, you can access the PSTN directly rather than pressing pound key ('#') or using &#42;&#42;8 to access the PSTN network.  
+
+In addition, my phone providers voice mail uses *98, now I can directly access it even though my phones are connected to the OBI110/FreePBX.
 
 (Note: these may need to be changed if you are in a different country or want direct access to other numbers, or just prefix all your calls with # to access the PSTN)
 
