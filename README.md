@@ -506,7 +506,7 @@ First we need add a DigitMap entry that filters the types of call we want to go 
 
 So now for outgoing calls using 10 digit local number, or long distance number prefixed by 1, you can access the PSTN directly rather than pressing pound key ('#') or using &#42;&#42;8 to access the PSTN network.  
 
-In addition, my phone providers voice mail uses *98, now I can directly access it even though my phones are connected to the OBI110/FreePBX.
+In addition, my phone providers voice mail uses *98, now I can directly access it even though my phones are connected to the OBI110/FreePBX.  It is possible that FreePBX is busy with a call and second call goes to service provider voice mail system, so need a simple way to check it.
 
 (Note: these may need to be changed if you are in a different country or want direct access to other numbers, or just prefix all your calls with # to access the PSTN)
 
