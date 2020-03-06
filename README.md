@@ -512,11 +512,11 @@ In addition, my phone providers voice mail uses *98, now I can directly access i
 
 Then add a reference to the User Defined DigitMap you just created (dm2) in the final DigitMap/OutboundCallRoute for the Phone terminal.  It should look like this:
 
-	DigitMap: (911|**0|***|#|(Mdm2)|**1(Msp1)|**8(Mli))
-	OutboundCallRoute: {(<#:>|911):li},{**0:aa},{***:aa2},{(<**1:>(Msp1)):sp1},{(<**8:>(Mli)):li},{(Mdm2):li}
+	DigitMap: (911|**0|***|#|*97|(Mdm2)|**1(Msp1)|**8(Mli))
+	OutboundCallRoute: {(<#:>|911):li},{**0:aa},{***:aa2},{(*97):sp1},{(<**1:>(Msp1)):sp1},{(<**8:>(Mli)):li},{(Mdm2):li}
 	CallReturnDigitMaps: Default
 
-
+Also added ability to check voice mail on FreePBX by pressing *97.
 
 
 
