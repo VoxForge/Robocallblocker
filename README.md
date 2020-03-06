@@ -522,9 +522,7 @@ Also added ability to check voice mail on FreePBX by pressing *97, and removed d
 
 TODO:
 
-**5. Sending email notifications of Voice Mails**
-
-outbound calling
+Sending email notifications of Voice Mails
 
 fix extensions to both use pjsip
 
