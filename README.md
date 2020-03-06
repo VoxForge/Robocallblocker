@@ -1,9 +1,9 @@
 # Robocallblocker
-Configurations for OBI110 and FreePBX/Asterisk block landline robocallers.
+Configurations for OBI110 and FreePBX/Asterisk to block landline robocallers.
  
 We have an old-school landline phone for home use and have been getting many SPAM calls. This is an approach to blocking those calls using an OBI110 [ATA](https://en.wikipedia.org/wiki/Analog_telephone_adapter) and [FreePBX](https://en.wikipedia.org/wiki/FreePBX).  
 
-It simply asks callers to press a key, and if they do, it then transfers the call to our regular [landline](https://en.wikipedia.org/wiki/Landline) phone.  If no one answers, it sends the call to a good voice mail extension.  If they don't press a key, it sends the call to a SPAM voice mail.  A whitelist allows known callers bypass the IVR Spam filter altogether and ring your phone directly.
+It simply asks callers to press a key, and if they do, it then transfers the call to our regular [landline](https://en.wikipedia.org/wiki/Landline) phone.  If no one answers, it sends the call to a good voice mail extension.  If they don't press a key, it sends the call to a SPAM voice mail.  A whitelist allows known callers bypasses the IVR Spam filter altogether and rings your phone directly.
 
 The ATA used in this document is an old OBI110 I had purchased a few years ago and finally got around to setting up to communicate with FreePBX on an old HP mini netbook. 
 
@@ -355,6 +355,12 @@ Applications > Extensions
 	Pin Sets - defaults
 	Other - defaults
 
+**4.d Voicemail volume**
+
+Settings > Voice Mail
+
+	Voicemail Recording Gain 	3 db
+
 **5. Troubleshooting**
 
 ***5.a fail2ban***
@@ -443,7 +449,7 @@ terminal by the software.  OBi devices support the following terminals:
 	IP Voice Services - sp1, sp2
 	...
 
-[source: Obi DigitMap CallRoute Tutorial](http://www.obitalk.com/forum/index.php?OBTKSID=9nhu8corvcoalmgq7q38umiso5&action=dlattach;topic=9104.0;attach=878)
+[source: Obi DigitMap CallRoute Tutorial](http://www.obitalk.com/forum/index.php?OBTKSID=9nhu8corvcoalmgqnnnq38umiso5&action=dlattach;topic=9104.0;attach=878)
 
 ****OutboundCallRoute - Review****
 
