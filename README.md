@@ -399,6 +399,31 @@ Call Recording
 
 (KEYWORD:CALL_REC_OPTION - if set to Yes, it will not begin recording unless a call is bridged to another channel - i.e. connected to an extension)
 
+
+***5.c Time issues***
+
+Problem: UC logs have wrong time
+
+Solution: enable NTP (Network Time Protocol)
+
+(see: https://www.freepbxhosting.com/blog/fix-incorrect-time-freepbx/)
+
+SSH into your PBX, confirm that NTP is running:
+
+	service ntpd status
+
+To restart NTP:
+
+	service ntpd restart
+
+To configure NTP to run at system start:
+
+	chkconfig ntpd on
+
+To see which servers your PBX is syncing time with:
+
+	ntpq -p
+
 **6. Direct Outbound Calling**
 
 Default OBI110 outbound call routes send you through FreePBX and then you must use the previously configured FreePBX outbound route to call as you normally would.  So to make a call to the [PSTN](https://en.wikipedia.org/wiki/Public_switched_telephone_network), you need to:
